@@ -11,5 +11,8 @@ public function get_login(){
     return view('login.login');
 }
 
+public function getWelcome() {
+    return view('login.welcome', ['name' => "Sarah"]);
+}
 
 }
