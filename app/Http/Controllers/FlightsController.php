@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateFlightRequest;
 use App\Models\Flight;
 use Illuminate\Http\Request;
 
@@ -18,8 +19,14 @@ class FlightsController extends Controller
         return view('Create_Flights');
     }
 
-    public function store(Request $request)
+    public function store(CreateFlightRequest $request)
     {
+
+        // ===== Simple Validation =====
+        // $validated = $request->validate([
+        //     'name' => 'required',
+        // ]);
+
         $dataToInsert = [
             'name' => $request->name,
             'created_at' => date('Y-m-d H:i:s')

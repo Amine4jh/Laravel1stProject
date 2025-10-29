@@ -29,6 +29,9 @@ input[type=text] {
 .submitBtn:hover {
   background-color: #45a049;
 }
+.error{
+  color: red;
+}
 </style>
 <body>
 
@@ -39,6 +42,19 @@ input[type=text] {
   <label for="fname">Name</label>
   <input type="text" id="name" name="name" placeholder="Flight name...">
 
+  {{-- Validate with a Custom Request --}}
+  @error('name')
+      <p class="error">{{ $message  }}</p>
+  @enderror
+
+  {{-- Simple Validation (Show Error) --}}
+  {{-- @if ($errors->any())
+  <ul>
+    @foreach ($errors->all() as $error)
+      <li class="error">{{ $error }}</li>
+    @endforeach
+  </ul>
+  @endif --}}
   <input type="submit" class="submitBtn" value="Add">
 </form>
 
